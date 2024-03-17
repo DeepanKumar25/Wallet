@@ -5,21 +5,35 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ethers } from "ethers";
 
-function CreateAccount({setWallet, setSeedPhrase}) {
+function CreateAccount({ setWallet, setSeedPhrase }) {
   const [newSeedPhrase, setNewSeedPhrase] = useState(null);
+  const [copied, setCopied] = useState(false);
   const navigate = useNavigate();
 
-  function generateWallet(){
+  function generateWallet() {
     const mnemonic = ethers.Wallet.createRandom().mnemonic.phrase;
-    setNewSeedPhrase(mnemonic)
+    setNewSeedPhrase(mnemonic);
   }
 
-
-  function setWalletAndMnemonic(){
+  function setWalletAndMnemonic() {
     setSeedPhrase(newSeedPhrase);
-    setWallet(ethers.Wallet.fromPhrase(newSeedPhrase).address)
+    setWallet(ethers.Wallet.fromPhrase(newSeedPhrase).address);
   }
-
+  const copyCodeHandler = (item) => {
+    navigator.clipboard
+      .writeText(item)
+      .then(() => {
+        // Text successfully copied
+        setCopied(() => true);
+        setTimeout(() => {
+          setCopied(true);
+        }, 2000); // Hide "Copied" message after 2 seconds
+      })
+      .catch((err) => {
+        // Handle any errors while copying
+        console.error("Failed to copy: ", err);
+      });
+  };
 
   return (
     <>
@@ -39,16 +53,24 @@ function CreateAccount({setWallet, setSeedPhrase}) {
           Generate Seed Phrase
         </Button>
         <Card className="seedPhraseContainer">
-         {newSeedPhrase && <pre style={{whiteSpace: "pre-wrap"}}>{newSeedPhrase}</pre>}
+          {newSeedPhrase && (
+            <>
+              <pre style={{ whiteSpace: "pre-wrap" }}>{newSeedPhrase}</pre>
+              <button onClick={() => copyCodeHandler(newSeedPhrase)}>
+                {copied ? "copied" : "copy"}
+              </button>
+            </>
+          )}
         </Card>
         <Button
           className="frontPageButton"
           type="default"
           onClick={() => setWalletAndMnemonic()}
+          disabled={!copied}
         >
-          Open Your New Wallet
+          {copied ? "  Open Your New Wallet" : "pls copy seed phrase"}
         </Button>
-        <p className="frontPageBottom" onClick={()=>navigate("/")}>
+        <p className="frontPageBottom" onClick={() => navigate("/")}>
           Back Home
         </p>
       </div>
