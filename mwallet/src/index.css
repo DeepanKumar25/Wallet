@@ -19,17 +19,7 @@ code {
 .ant-tabs-nav-wrap {
   justify-content: center !important;
 }
-.uuu{
-  background-color: white;
-  top:0;
-  right:0;
-  height:50px;
-  width:100px;
-  position: absolute;
-  border-radius: 8px;
-  border:1px solid black;
-  cursor:pointer;
-}
+
 .popup {
   background:white;
   z-index:10;
@@ -62,4 +52,45 @@ right:0;
 }
 .popup button:hover{
   scale:1.05;
+}
+/* Component container */
+.component {
+  display: flex;
+  align-items: center;
+
+}
+
+/* Dropdown styling */
+.component select {
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline:none;
+  width:30%;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* Input field styling */
+.component input[type="number"] {
+  padding: 5px;
+  border-radius: 5px;
+  outline:none;
+  border: 1px solid #ccc;
+  width:70%;
+  padding: 10px;
+  font-size: 14px;
+}
+.fixButton{
+  padding: 5px;
+  width:50%;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+.fixButton:hover{
+  border: 1px solid #1677ff;
+  color:#1677ff;
 }

@@ -26,7 +26,7 @@ function CreateAccount({ setWallet, setSeedPhrase }) {
         // Text successfully copied
         setCopied(() => true);
         setTimeout(() => {
-          setCopied(true);
+          setCopied(false);
         }, 2000); // Hide "Copied" message after 2 seconds
       })
       .catch((err) => {
@@ -56,7 +56,7 @@ function CreateAccount({ setWallet, setSeedPhrase }) {
           {newSeedPhrase && (
             <>
               <pre style={{ whiteSpace: "pre-wrap" }}>{newSeedPhrase}</pre>
-              <button onClick={() => copyCodeHandler(newSeedPhrase)}>
+              <button className='fixButton' onClick={() => copyCodeHandler(newSeedPhrase)}>
                 {copied ? "copied" : "copy"}
               </button>
             </>
@@ -68,7 +68,7 @@ function CreateAccount({ setWallet, setSeedPhrase }) {
           onClick={() => setWalletAndMnemonic()}
           disabled={!copied}
         >
-          {copied ? "  Open Your New Wallet" : "pls copy seed phrase"}
+          {copied ? "  Open Your New Wallet" : "Please copy seed phrase"}
         </Button>
         <p className="frontPageBottom" onClick={() => navigate("/")}>
           Back Home

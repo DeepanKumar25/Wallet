@@ -15,6 +15,7 @@ import logo from "../noImg.png";
 import axios from "axios";
 import { CHAINS_CONFIG } from "../chains";
 import { ethers } from "ethers";
+import InputComponent from "./inputField";
 
 function WalletView({
   wallet,
@@ -174,22 +175,12 @@ function WalletView({
         <>
           <h3>Bridge </h3>
           
-          <div className="sendRow">
-            <p style={{ width: "90px", textAlign: "left" }}> To:</p>
-            <Input
-              value={sendToAddress}
-              onChange={(e) => setSendToAddress(e.target.value)}
-              placeholder="0x..."
-            />
+          <InputComponent/>
+          <div style={{marginTop:"20px"}}>
+
+          <InputComponent/>
           </div>
-          <div className="sendRow">
-            <p style={{ width: "90px", textAlign: "left" }}> Amount:</p>
-            <Input
-              value={amountToSend}
-              onChange={(e) => setAmountToSend(e.target.value)}
-              placeholder="Native tokens you wish to send..."
-            />
-          </div>
+
           <Button
             style={{ width: "100%", marginTop: "20px", marginBottom: "20px" }}
             type="primary"
