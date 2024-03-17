@@ -19,3 +19,14 @@ code {
 .ant-tabs-nav-wrap {
   justify-content: center !important;
 }
+.uuu{
+  background-color: white;
+  top:0;
+  right:0;
+  height:50px;
+  width:100px;
+  position: absolute;
+  border-radius: 8px;
+  border:1px solid black;
+  cursor:pointer;
+}

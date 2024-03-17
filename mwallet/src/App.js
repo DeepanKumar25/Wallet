@@ -7,11 +7,13 @@ import Home from "./components/Home";
 import CreateAccount from "./components/CreateAccount";
 import RecoverAccount from "./components/RecoverAccount";
 import WalletView from "./components/WalletView";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 function App() {
   const [wallet, setWallet] = useState(null);
   const [seedPhrase, setSeedPhrase] = useState(null);
   const [selectedChain, setSelectedChain] = useState("0x1");
+  const [drop,setdrop]= useState(false);
 
   return (
     <div className="App">
@@ -40,6 +42,14 @@ function App() {
           ]}
           className="dropdown"
         ></Select>
+        {wallet && (
+
+    <BsThreeDotsVertical onClick={()=>setdrop(!drop)} className=""/>
+        )}
+        {drop && (
+
+    <div className="uuu"> hiiiiii</div>
+        )}
       </header>
       {wallet && seedPhrase ? (
         <Routes>
