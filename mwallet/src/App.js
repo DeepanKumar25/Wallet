@@ -13,7 +13,8 @@ function App() {
   const [wallet, setWallet] = useState(null);
   const [seedPhrase, setSeedPhrase] = useState(null);
   const [selectedChain, setSelectedChain] = useState("0x1");
-  const [drop,setdrop]= useState(false);
+  const [drop, setdrop] = useState(false);
+  const [show, showKey] = useState(false);
 
   return (
     <div className="App">
@@ -43,12 +44,21 @@ function App() {
           className="dropdown"
         ></Select>
         {wallet && (
-
-    <BsThreeDotsVertical onClick={()=>setdrop(!drop)} className=""/>
+          <BsThreeDotsVertical
+            onClick={() => {
+              setdrop(!drop);
+              showKey(false);
+            }}
+            className="threedots"
+          />
         )}
         {drop && (
-
-    <div className="uuu"> hiiiiii</div>
+          <div className="popup">
+            <button type="button" onClick={() => showKey(true)}>
+             Show Private key
+            </button>
+            {show && <div> fhgfjghbhj</div>}
+          </div>
         )}
       </header>
       {wallet && seedPhrase ? (

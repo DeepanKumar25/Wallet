@@ -30,3 +30,22 @@ code {
   border:1px solid black;
   cursor:pointer;
 }
+.popup {
+  display: block;
+  width:100px;
+  position: absolute;
+  top: 48px; 
+left:20%;
+ box-shadow: 0 0 5px grey;
+  border-radius: 8px;
+  padding: 10px;
+
+}
+.threedots{
+  cursor: pointer;
+}
+.popup button{
+  background-color: white;
+  border:1px solid grey;
+  cursor: pointer;
+}
