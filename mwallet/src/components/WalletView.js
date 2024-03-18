@@ -34,7 +34,13 @@ function WalletView({
   const [processing, setProcessing] = useState(false);
   const [hash, setHash] = useState(null);
 
+const handle1Data=(data)=>{
+  console.log(data);
+}
 
+const handle2Data=(data)=>{
+  console.log(data);
+}
   const items = [
     {
       key: "3",
@@ -175,10 +181,10 @@ function WalletView({
         <>
           <h3>Bridge </h3>
           
-          <InputComponent/>
+          <InputComponent dataPass={handle1Data}/>
           <div style={{marginTop:"20px"}}>
 
-          <InputComponent/>
+          <InputComponent dataPass={handle2Data}/>
           </div>
 
           <Button

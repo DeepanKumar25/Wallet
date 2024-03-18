@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 
-const InputComponent = () => {
+const InputComponent = ({coins,dataPass}) => {
   const [selectedOption, setSelectedOption] = useState('');
   const [inputValue, setInputValue] = useState('');
 
   const handleDropdownChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedOption(selectedValue);
+    dataPass({coin:selectedOption,amount:event.target.value})
     setInputValue(selectedValue); // Optionally, you can update input field value based on dropdown selection
   };
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
+    dataPass({coin:selectedOption,amount:event.target.value})
   };
 
+  
   
   const solanaNetworkCoins= [
     "sol",
